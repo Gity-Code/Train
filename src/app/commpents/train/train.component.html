@@ -1,0 +1,51 @@
+<p>train works!</p>
+<!-- <div *ngIf="response"> 
+{{response | json}}
+</div> -->
+<div *ngIf="dataSource">
+<table cdk-table [dataSource]="dataSource">
+  <!-- <ng-container cdk-cell *cdkCellDef="let row; let index = index"> -->
+ <!-- <div *ngIf="!row.editable else editMode">  -->
+    <ng-container cdkColumnDef="id">
+      <th cdk-header-cell *cdkHeaderCellDef> id </th>
+      <td cdk-cell *cdkCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <ng-container cdkColumnDef="title">
+      <th cdk-header-cell *cdkHeaderCellDef> title </th>
+      <!-- <div *ngIf="!row.editable else editMode">  -->
+      <td cdk-cell *cdkCellDef="let element"> {{element.title}} </td>
+       <!-- </div>  -->
+    </ng-container>
+     <!-- </div>  -->
+    <!-- </ng-container> -->
+
+    <ng-container cdkColumnDef="edit">
+        <th cdk-header-cell *cdkHeaderCellDef> עריכה </th>
+        <ng-container cdk-cell *cdkCellDef="let row; let index = index">
+            <div  class="edit-icon">
+                <button (click)="edit(row)" class="edit-icon" mat-icon-button
+                                    aria-label="edit-icon"
+                                    matTooltip="עריכה">
+                                    <mat-icon class="edit-icon">edit</mat-icon>
+                                </button>
+                <!-- <mat-spinner [diameter]="40"></mat-spinner> -->
+            </div>
+        </ng-container>
+    </ng-container>
+
+
+
+    <ng-template #editMode>
+        <mat-form-field>
+            <input
+              matInput
+            />
+          </mat-form-field>
+    </ng-template>
+  
+  
+    <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+    <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div> 
