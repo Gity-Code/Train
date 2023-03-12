@@ -26,6 +26,8 @@ export class TrainComponent implements OnInit {
   }
 
   async ngOnInit() {
+    let response = await this.dataService.updateData(); 
+    console.log('response' , response); 
     await this.getData();
 
   }
@@ -52,6 +54,10 @@ export class TrainComponent implements OnInit {
 
     //  this.dataSource = this.response; 
     console.log('response', this.response);
+  }
+
+  saveRow(row: any){
+
   }
 
 }
